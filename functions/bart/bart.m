@@ -55,9 +55,8 @@ if ispc
     out_strWSL =  WSLPathCorrection(out_str);
 
     % Execute the BART command
-    [ERR,cmdout] = system(['wsl bart ',cmd,in_strWSL,out_strWSL]);
-
-    % Return Version
+    [ERR,cmdout] = system(['wsl.exe --cd ~ bart ',cmd,in_strWSL,out_strWSL]);
+    
     if contains(cmd,"version")
         app.TextMessage(cmdout);
         app.bartVersion = cmdout;
