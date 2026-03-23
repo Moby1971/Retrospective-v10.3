@@ -20,3 +20,11 @@ functions/settings/makeLogFile.m
 tests/
 *.pyc
 functions/autoreco/mrdAutoRecoManager.m
+.claude/worktrees/confident-kare/
+.claude/worktrees/ecstatic-robinson/
+.claude/worktrees/elated-stonebraker/
+.claude/worktrees/gracious-chaum/
+.claude/worktrees/laughing-heyrovsky/
+.claude/worktrees/reverent-hawking/
+.claude/worktrees/thirsty-mcclintock/
+retrospective10.mlapp.bak
