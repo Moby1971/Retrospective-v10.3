@@ -71,15 +71,20 @@ end
 
 nrpoints = cnt;
 
+% Store original template coordinates
+Xp0 = Xp(1:nrpoints);
+Yp0 = Yp(1:nrpoints);
+Zp0 = Zp(1:nrpoints);
+
 for i = 1:imax
- 
+
      phi1 = (i-1) * tiny_golden_angles(1);
-     phi2 = (i-i) * tiny_golden_angles(1);
+     phi2 = (i-1) * tiny_golden_angles(1);
 
      for j = 1:nrpoints
- 
-        r = [Xp(j),Yp(j),Zp(j)]*roty(phi1,'deg')*rotx(phi1,'deg');
-      
+
+        r = [Xp0(j),Yp0(j),Zp0(j)]*roty(phi1,'deg')*rotx(phi1,'deg');
+
         Xp(nrpoints*(i-1)+j) = r(1);
         Yp(nrpoints*(i-1)+j) = r(2);
         Zp(nrpoints*(i-1)+j) = r(3);

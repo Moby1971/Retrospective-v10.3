@@ -23,10 +23,10 @@ function [x,flag,relres,iter,resvec] = pcgpc(A,b,tol,maxit,M1,M2,x0)
 
 % check arguments
 if nargin<2; error('Not enough input arguments.'); end
-if ~exist('tol') || isempty(tol); tol = 1e-6; end
-if ~exist('maxit') || isempty(maxit); maxit = 20; end
-if ~exist('M1') || isempty(M1); M1 = @(arg) arg; end
-if exist('M2') && ~isempty(M2); error('M2 argument not supported'); end
+if ~exist('tol','var') || isempty(tol); tol = 1e-6; end
+if ~exist('maxit','var') || isempty(maxit); maxit = 20; end
+if ~exist('M1','var') || isempty(M1); M1 = @(arg) arg; end
+if exist('M2','var') && ~isempty(M2); error('M2 argument not supported'); end
 if ~ismatrix(b); error('b argument must be a column vector or 2d array'); end
 validateattributes(tol,{'numeric'},{'scalar','nonnegative','finite'},'','tol');
 validateattributes(maxit,{'numeric'},{'scalar','nonnegative','integer'},'','maxit');
@@ -39,7 +39,7 @@ if isnumeric(M1); M1 = @(arg) M1 \ arg; end
 t = tic;
 iter = 1;
 flag = 1;
-if ~exist('x0') || isempty(x0)
+if ~exist('x0','var') || isempty(x0)
     r = b;
     x = zeros(size(b),'like',b);
 else

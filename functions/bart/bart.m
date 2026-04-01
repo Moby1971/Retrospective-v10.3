@@ -50,7 +50,7 @@ if ispc
     out_str = sprintf(' %s', out{:});
 
     % For WSL and modify paths
-    cmdWSL = WSLPathCorrection(cmd); %#ok<NASGU> 
+    % cmdWSL = WSLPathCorrection(cmd); 
     in_strWSL = WSLPathCorrection(in_str);
     out_strWSL =  WSLPathCorrection(out_str);
 

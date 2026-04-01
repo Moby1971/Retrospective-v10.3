@@ -8,9 +8,9 @@ res=zeros(size(image,1),size(image,2),size(image,3),size(image,4),4);
 %
 
 
-Dz = image([2:end,1],:,:,:) - image;
-Dy = image(:,[2:end,1],:,:) - image;
-Dx = image(:,:,[2:end,1],:) - image;
+%Dz = image([2:end,1],:,:,:) - image;
+%Dy = image(:,[2:end,1],:,:) - image;
+%Dx = image(:,:,[2:end,1],:) - image;
 Dt = image(:,:,:,[2:end,1]) - image;          
 
 res(:,:,:,:,1) = 0;  

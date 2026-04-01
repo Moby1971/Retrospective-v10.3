@@ -97,7 +97,7 @@ classdef nufft_3d
             if ~isscalar(obj.low) || obj.low<0 || mod(obj.low,1)
                 app.TextMessage('low must be a nonnegative integer');
             end
-            if (numel(N)==1 || numel(N)==3) && isnumeric(N)
+            if (numel(N)==1 || numel(N)==3) && isnumeric(N) %#ok<ISCL>
                 obj.N = ones(3,1).*reshape(N,[],1); 
                 N = []; %#ok<NASGU> 
             else
@@ -326,7 +326,7 @@ classdef nufft_3d
             if isempty(obj.fnull) || isempty(obj.anull)
                 y = reshape(y,prod(obj.N),[]); % coils separate
             elseif size(x,4)~=size(obj.fnull,4)
-                app.TextMessage(sprintf('check number of coils (received %i expected %i)',size(x,4),size(obj.fnull,4)));
+                error('check number of coils (received %i expected %i)',size(x,4),size(obj.fnull,4));
             else
                 % nullspace constraints
                 r = sum(obj.fnull.*x,4);

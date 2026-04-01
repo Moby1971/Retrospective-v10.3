@@ -118,7 +118,7 @@ nv = nnz(f < 1-opts.tol);
 
 % display
 plot(W/W(1)); hold on; plot(f,'--'); hold off; xlim([0 numel(W)]);
-line(xlim,[1 1]*sigma/W(1),ylim,'linestyle',':','color','black');
+line(xlim,[1 1]*sigma/W(1),'linestyle',':','color','black');
 title(sprintf('tol=%.2f (%i nullspace vectors)',opts.tol,nv));
 legend({'singular values','filter','noise floor'}); drawnow;
 

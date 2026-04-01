@@ -107,16 +107,16 @@ ksp = zeros(nx,ny,nz,nc,'like',data);
 for iter = 1:opts.maxit
 
     % data consistency
-    tmp = ifft3(ksp);
+    tmp = ifftn(ksp);
     tmp = iNUFT(obj,obj.fNUFT(tmp)-data,10,opts.damp);
-    tmp = fft3(tmp);
+    tmp = fftn(tmp);
     ksp = ksp - tmp;
     
     % threshold image in wavelet domain
     if opts.sparsity<1
-        ksp = ifft3(ksp);
+        ksp = ifftn(ksp);
         ksp = Q.thresh(ksp,opts.sparsity);
-        ksp = fft3(ksp);
+        ksp = fftn(ksp);
     end
     
     % normal calibration matrix
@@ -311,6 +311,6 @@ norms(2,:)=norms(2,:)./norms(2,1);
 norms(3,:)=norms(3,1)./norms(3,:);
 subplot(1,4,4);
 %ax = plotyy(1:iter,norms([1 3],:),1:iter,norms(2,:));
-legend('||A||_F^{-1}','||A||_2^{-1}','||A||_*'); axis(ax,'tight');
+%legend('||A||_F^{-1}','||A||_2^{-1}','||A||_*'); axis(ax,'tight');
 xlim([0 iter+1]); xlabel('iters'); title(sprintf('tol %.2e',tol(end)));
 drawnow;
